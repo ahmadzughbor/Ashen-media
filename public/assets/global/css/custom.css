@@ -1,0 +1,34 @@
+.margin-bottom-20 {
+    margin-bottom: 20px
+}
+
+.select2-container {
+    z-index: 99999 !important;
+}
+
+.create-post .dropdown-menu.open {
+    z-index: 999999 !important;
+    width: 100%;
+}
+
+figure iframe {
+    width: 250px;
+    height: 100px;
+}
+
+.errors {
+    color: red;
+}
+
+
+.borderError {
+    border: 1px solid red !important;
+}
+
+.width-100 {
+    width: 100% !important;
+}
+
+.height-100 {
+    height: 100% !important;
+}
