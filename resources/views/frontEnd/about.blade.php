@@ -3,12 +3,16 @@
      <div class="container">
          <div class="row">
              <div class="col-lg-6 d-flex flex-column justify-content-center order-lg-first order-last">
-                 <h1 data-aos="fade-up" data-aos-delay="200"> About us</h1>
+                 <h1 data-aos="fade-up" data-aos-delay="200">{{__('AboutUs')}} </h1>
                  <h2 data-aos="fade-up" data-aos-delay="250">
-                    @if($aboutus)
-                    {{$aboutus->description}}
-                    @endif
-                    
+                     @if($aboutus)
+                        @if(app()->getLocale() == 'ar')
+                        {{$aboutus->description_ar}}
+                        @else
+                        {{$aboutus->description}}
+                        @endif
+                     @endif
+
                  </h2>
              </div>
              <div class="col-lg-6 hero-img  p-2 order-lg-last order-first" data-aos="zoom-out" data-aos-delay="100">
@@ -29,12 +33,16 @@
                      <img src="@if($ourvision){{asset('storage/images/' . $ourvision->path)}} @endif" class="img-fluid  p-3" alt="about image">
                  </div>
                  <div class="col-lg-6 pt-5 pt-lg-0 " data-aos="fade-up" data-aos-delay="100">
-                     <h2 class="mb-3">our vision</h2>
+                     <h2 class="mb-3"> {{__('OurVision')}} </h2>
                      <p>
-                     @if($ourvision)
-                    {{$ourvision->description}}
-                    @endif
-                        
+                         @if($ourvision)
+                         @if(app()->getLocale() == 'ar')
+                         {{$ourvision->description_ar}}
+                         @else
+                         {{$ourvision->description}}
+                        @endif
+                         @endif
+
                      </p>
                  </div>
              </div>
@@ -46,12 +54,16 @@
                      <img src="@if($ourmission){{asset('storage/images/' . $ourmission->path)}} @endif" class="img-fluid  p-2" alt="about image">
                  </div>
                  <div class="col-lg-6 pt-5 pt-lg-0  order-lg-first order-last" data-aos="fade-up" data-aos-delay="150">
-                     <h2 class="mb-3">our mission</h2>
+                     <h2 class="mb-3">  {{__('OurMission')}}</h2>
                      <p>
-                     @if($ourmission)
-                        {{$ourmission->description}}
-                    @endif
-                       
+                         @if($ourmission)
+                            @if(app()->getLocale() == 'ar')
+                            {{$ourmission->description_ar}}
+                            @else
+                            {{$ourmission->description}}
+                            @endif
+                         @endif
+
                      </p>
                  </div>
              </div>
@@ -64,11 +76,15 @@
                      <img src="@if($ourgoals){{asset('storage/images/' . $ourgoals->path)}} @endif" class="img-fluid p-2" alt="about image">
                  </div>
                  <div class="col-lg-6 pt-5 pt-lg-0  " data-aos="fade-up" data-aos-delay="200">
-                     <h2 class="mb-3">our goals</h2>
+                     <h2 class="mb-3">{{__('ourGoals')}}</h2>
                      <p>
-                     @if($ourgoals)
-                        {{$ourgoals->description}}
-                    @endif
+                         @if($ourgoals)
+                            @if(app()->getLocale() == 'ar')
+                                {{$ourgoals->description_ar}}
+                            @else
+                                {{$ourgoals->description}}
+                            @endif
+                         @endif
                      </p>
                      <!-- <ul>
                          <li>Introducing new and innovative approaches to design,

@@ -55,6 +55,12 @@
                             <textarea class="form-control" id="description" name="description" placeholder="Enter Name"> </textarea>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">User image</label>
+                        <div class="col-sm-12">
+                            <input type="file" src="" id="image" name="image">
+                        </div>
+                    </div>
 
 
                     <div class="col-sm-offset-2 col-sm-10">
@@ -123,7 +129,7 @@
                     $('#company_name').val(data.company_name);
                     $('#description').val(data.description);
 
-                    $("#serviceForm").attr('action', url);
+                    $("#sayForm").attr('action', url);
                     $('#ajaxModel').modal('show');
 
 

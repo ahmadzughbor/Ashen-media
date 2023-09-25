@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html 
+@if(app()->getLocale() == 'ar')
+ lang="ar" dir="rtl"
+ @else
+ lang="en" 
+ @endif
+ >
 
 @php
 $assets = asset('front');
@@ -30,6 +36,9 @@ $assets = asset('front');
     <link href="{{ $assets }}/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="{{ $assets }}/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="{{ $assets }}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    @if(app()->getLocale() == 'ar')
+    <link href="{{ $assets }}/assets/css/bootstrap-rtl.min" rel="stylesheet">
+    @endif
 
     <!-- RTL -->
     <!-- Template Main CSS File -->

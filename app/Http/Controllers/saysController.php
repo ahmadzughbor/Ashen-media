@@ -64,14 +64,20 @@ class saysController extends Controller
         $request->validate([
             'user_name' => 'required',
             'company_name' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'image' => 'required',
         ]);
+        $file = $request->file('image'); // Replace 'image' with your input name
+        $fileName = time() . '.' . $file->getClientOriginalExtension();
 
+        $file->storeAs('public/images', $fileName);
     
         $say = say::create([
             'user_name' => $request->user_name ,
             'company_name' => $request->company_name ,
-            'description' => $request->description 
+            'description' => $request->description ,
+            'path' => $fileName
+
         ]);
         return  response()->json($say ,200);
      }
@@ -108,11 +114,23 @@ class saysController extends Controller
         ]);
 
         $say = say::where('id' ,$id)->first();
+        $file = $request->file('image'); // Replace 'file' with your input name
+
+        if($file){
+
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            
+            $file->storeAs('public/images', $fileName);
+        }else{
+            $fileName = $say->path;
+        }
 
         $say = $say->update([
             'user_name' => $request->user_name ,
             'company_name' => $request->company_name ,
-            'description' => $request->description 
+            'description' => $request->description ,
+            'path' => $fileName
+
         ]);
         return  response()->json($say ,200);
      }

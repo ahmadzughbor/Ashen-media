@@ -5,7 +5,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8">
                 <div class="section-title text-center">
-                    <h2>What did they say about us?</h2>
+                    <h2>{{__('says')}}</h2>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                     <div class="testimonial-wrap ">
                         <div class="testimonials-item">
                             <div class="d-flex mb-3">
-                                <img src="{{ $assets }}/assets/img/client.jpg" alt>
+                                <img src="{{asset('storage/images/' . $say->path) }}" width="80" height="80" alt>
                                 <div class="px-3">
                                     <h3>{{ $say->user_name}}</h3>
                                     <span>{{ $say->company_name}}</span>

@@ -13,6 +13,10 @@
         <textarea name="description"  class="form-control form-control-solid" cols="30" rows="10"> @isset($ourgoals){{ $ourgoals->description }} @endisset</textarea>
     </div>
     <div class="col-md-6 mb-10">
+        <label class="form-label">description arbic </label>
+        <textarea name="description_ar"  class="form-control form-control-solid" cols="30" rows="10"> @isset($ourgoals){{ $ourgoals->description_ar }}  @endisset</textarea>
+    </div>
+    <div class="col-md-6 mb-10">
         <label class="form-label">photo </label>
         <input type="file" name="file" class="form-control form-control-solid" />
         @if($ourgoals)

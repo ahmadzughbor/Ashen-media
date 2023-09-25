@@ -10,6 +10,6 @@ class missionsection extends Model
     use HasFactory;
     protected $table = "missionsection";
     protected $fillable = [
-        'path','description'
+        'path','description','description_ar'
     ];
 }

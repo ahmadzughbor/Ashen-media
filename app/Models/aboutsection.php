@@ -10,6 +10,6 @@ class aboutsection extends Model
     use HasFactory;
     protected $table = "aboutsection";
     protected $fillable = [
-        'path','description'
+        'path','description','description_ar'
     ];
 }

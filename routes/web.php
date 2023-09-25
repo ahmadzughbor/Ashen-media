@@ -33,7 +33,7 @@ Route::get('/admin', function () {
 });
 
 
-Route::get('/frontend', [fronController::class, 'index'])->name('frontend.index');
+Route::get('/frontend/{locale?}', [fronController::class, 'index'])->name('frontend.index');
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 

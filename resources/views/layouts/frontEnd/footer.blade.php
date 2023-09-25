@@ -4,7 +4,7 @@
             <div class="row align-items-center">
               <div
                 class="col-md-4 d-flex justify-content-md-start justify-content-center mt-md-0 mt-2">
-                <img src="{{ $assets }}/assets/img/logo.svg" alt>
+                <img src="{{asset('storage/images/' . $settings->app_logo) }}" width="107" height="40" alt>
               </div>
               <div class="col-md-4">
                 <div class="copyright text-center">

@@ -52,6 +52,20 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="snapchatLink">app logo</label>
+                
+                <input type="file" name="app_logo" class="form-control" id="app_logo" placeholder="app_logo">
+            </div>
+        </div>
+        @if($settings)
+            @if($settings->app_logo)
+                <img src="{{asset('storage/images/' . $settings->app_logo)}}" alt="" width="50" height="50">
+            @endif
+        @endif
+    </div>
 
     <div class="col-md-12">
         <button id="saveBtn" class="btn btn-primary mt-3">Save</button>

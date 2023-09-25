@@ -18,7 +18,8 @@ use Illuminate\Http\Request;
 
 class fronController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         $sliders = sliders::get();
         $ourgoals = goalssection::first();
@@ -33,9 +34,9 @@ class fronController extends Controller
         $packages = package::with('features')->latest()->take(4)->get();
         $settings = settings::first();
 
+       
 
 
-        
-        return view('frontEnd.index',compact('settings', 'partners', 'says', 'packages','Statistic', 'projects','sliders','ourgoals','ourmission','ourvision','aboutus','services'));
+        return view('frontEnd.index', compact('settings', 'partners', 'says', 'packages', 'Statistic', 'projects', 'sliders', 'ourgoals', 'ourmission', 'ourvision', 'aboutus', 'services'));
     }
 }

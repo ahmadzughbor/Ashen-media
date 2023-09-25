@@ -33,7 +33,16 @@ class settingsController extends Controller
     {
 
         $settings = settings::first();
+        $file = $request->file('app_logo'); // Replace 'file' with your input name
 
+        if($file){
+
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            
+            $file->storeAs('public/images', $fileName);
+        }else{
+            $fileName = $settings->path;
+        }
         
         if ($settings) {
             
@@ -44,9 +53,14 @@ class settingsController extends Controller
                 'twitterLink'  => $request->twitterLink,
                 'tiktokLink'  => $request->tiktokLink,
                 'snapchatLink' => $request->snapchatLink,
+                'app_logo' => $fileName
+
 
             ]);
         } else {
+            $request->validate([
+                'app_logo' =>'image|mimes:svg'
+            ]);
             settings::create([
                 'whatsappLink' => $request->whatsappLink,
                 'instagramLink' => $request->instagramLink,
@@ -54,6 +68,8 @@ class settingsController extends Controller
                 'twitterLink'  => $request->twitterLink,
                 'tiktokLink'  => $request->tiktokLink,
                 'snapchatLink' => $request->snapchatLink,
+                'app_logo' => $fileName
+
             ]);
         }
         // dd($request->snapchatLink);

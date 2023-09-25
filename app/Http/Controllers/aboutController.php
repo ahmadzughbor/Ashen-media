@@ -72,15 +72,18 @@ class aboutController extends Controller
            
             $aboutus = $aboutus->update([
                 'description' => $request->description,
+                'description_ar' => $request->description_ar,
                 'path' => $fileName
             ]);
         }else{
             $request->validate([
                 'description' => 'required',
+                'description_ar' => 'required',
                 'file' => 'required|image'
             ]);
             $aboutus =aboutsection::create([
                 'description' => $request->description,
+                'description_ar' => $request->description_ar,
                 'path' => $fileName
             ]);
 
@@ -92,9 +95,8 @@ class aboutController extends Controller
        
         $Vision = Visionsection::first();
         $file = $request->file('file'); // Replace 'file' with your input name
-        
         if($file){
-
+            
             $fileName = time() . '.' . $file->getClientOriginalExtension();
             
             $file->storeAs('public/images', $fileName);
@@ -102,18 +104,22 @@ class aboutController extends Controller
             $fileName = $Vision->path;
         }
         if ($Vision) {
-
-            $Vision = $Vision->update([
+            
+             $Vision->update([
                 'description' => $request->description,
+                'description_ar' => $request->description_ar,
                 'path' => $fileName
             ]);
         }else{
             $request->validate([
                 'description' => 'required',
+                'description_ar' => 'required',
                 'file' => 'required|image'
             ]);
             $Vision =Visionsection::create([
                 'description' => $request->description,
+                'description_ar' => $request->description_ar,
+
                 'path' => $fileName
             ]);
 
@@ -139,15 +145,20 @@ class aboutController extends Controller
             
             $mission->update([
                 'description' => $request->description,
+                'description_ar' => $request->description_ar,
+
                 'path' => $fileName
             ]);
         }else{
             $request->validate([
                 'description' => 'required',
+                'description_ar' => 'required',
                 'file' => 'required|image'
             ]);
             $mission =missionsection::create([
                 'description' => $request->description,
+                'description_ar' => $request->description_ar,
+
                 'path' => $fileName
             ]);
 
@@ -173,15 +184,19 @@ class aboutController extends Controller
             
             $goals->update([
                 'description' => $request->description,
+                'description_ar' => $request->description_ar,
                 'path' => $fileName
             ]);
         }else{
             $request->validate([
                 'description' => 'required',
+                'description_ar' => 'required',
                 'file' => 'required|image'
             ]);
             $goals =goalssection::create([
                 'description' => $request->description,
+                'description_ar' => $request->description_ar,
+
                 'path' => $fileName
             ]);
 

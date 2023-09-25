@@ -10,6 +10,6 @@ class Visionsection extends Model
     use HasFactory;
     protected $table = "visionsection";
     protected $fillable = [
-        'path','description'
+        'path','description','description_ar'
     ];
 }

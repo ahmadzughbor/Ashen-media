@@ -16,6 +16,7 @@ class settings extends Model
         'instagramLink',
         'tiktokLink',
         'snapchatLink',
+        'app_logo'
     ];
 
 }

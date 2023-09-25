@@ -144,6 +144,14 @@ return [
         // 'store'  => 'redis',
     ],
 
+
+
+    'available_locales' => [
+        'English' => 'en',
+        'Arabic' => 'ar',
+    ],
+
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

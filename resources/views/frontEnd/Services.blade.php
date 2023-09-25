@@ -4,7 +4,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8">
                 <div class="section-title text-center">
-                    <h2>Our services</h2>
+                    <h2>{{__('OurServices')}}</h2>
                 </div>
             </div>
 

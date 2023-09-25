@@ -10,7 +10,7 @@ class goalssection extends Model
     use HasFactory;
     protected $table = "goalssection";
     protected $fillable = [
-        'path','description'
+        'path','description','description_ar'
     ];
 }
 
