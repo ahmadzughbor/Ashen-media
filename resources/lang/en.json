@@ -11,6 +11,10 @@
   "OurPartners": "Our partners",
   "OurVision": "Our vision",
   "OurMission": "Our Mission",
-
-  "says": "What did they say about us?"
+  "says": "What did they say about us?",
+  "FirstName":"First Name",
+  "LastName":"Last Name",
+  "Email":"Email",
+  "Phone":"Phone",
+  "Message":"Message"
 }

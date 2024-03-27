@@ -4,11 +4,7 @@
 @section('content')
 
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <a href="javascript:void(0)" class="btn btn-primary  " id="createNewServise"> add slider</a>
-        <!-- <h6 class="m-0 font-weight-bold text-primary">slider</h6> -->
-
-    </div>
+    
     <div class="container">
         <h1>Contact Us </h1>
         <table class="table table-bordered data-table">

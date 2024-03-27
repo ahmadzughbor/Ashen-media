@@ -1139,3 +1139,7 @@ font-size: 15px;
     margin: -20px 0 30px 0;
   }
 }
+
+.swiper-slide img{
+  border-radius: 10px;
+}

@@ -5,7 +5,7 @@
             <!-- Start item -->
             @foreach($sliders as $item)
             <div class="swiper-slide text-center">
-                <img src="{{asset('storage/images/' . $item->path)}}" width="100%" height="70%"  alt>
+                <img src="{{asset('storage/images/' . $item->path)}}" width="1280" height="550"  alt>
             </div>
             @endforeach
 

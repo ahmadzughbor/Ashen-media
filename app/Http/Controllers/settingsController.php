@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\settings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class settingsController extends Controller
 {
@@ -34,16 +35,15 @@ class settingsController extends Controller
 
         $settings = settings::first();
         $file = $request->file('app_logo'); // Replace 'file' with your input name
-
-        if($file){
-
+        
+        if(isset($file)){
+            
             $fileName = time() . '.' . $file->getClientOriginalExtension();
             
             $file->storeAs('public/images', $fileName);
         }else{
-            $fileName = $settings->path;
+            $fileName = $settings->app_logo;
         }
-        
         if ($settings) {
             
             $settings->update([

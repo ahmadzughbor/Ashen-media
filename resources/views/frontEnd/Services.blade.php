@@ -10,15 +10,25 @@
 
             <div class="row justify-content-center">
                 @foreach($services as $item )
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><img src="{{ $assets }}/assets/img/services/01.svg" alt></div>
-                            <h4>{{ $item->title }}</h4>
-                            <p>
-                            {{ $item->description }}
-                            </p>
-                        </div>
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="icon-box">
+                        <div class="icon"><img src="{{asset('storage/images/' . $item->path)}}" alt></div>
+                        <h4>
+                            @if(app()->getLocale() == 'ar')
+                                {{$item->title_ar}}
+                            @else
+                                {{$item->title}}
+                            @endif
+                        </h4>
+                        <p>
+                            @if(app()->getLocale() == 'ar')
+                                {{$item->description_ar}}
+                            @else
+                                {{$item->description}}
+                            @endif
+                        </p>
                     </div>
+                </div>
                 @endforeach
                 <!-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                     <div class="icon-box">

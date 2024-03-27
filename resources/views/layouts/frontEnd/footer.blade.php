@@ -9,7 +9,7 @@
               <div class="col-md-4">
                 <div class="copyright text-center">
                   All Rights Reserved <strong><a target="_blank"
-                      href="https://www.instagram.com/ashenmedia.ae/?igshid=NzZhOTFlYzFmZQ==">ashenmedia</a>
+                      href="@isset($settings){{ $settings->instagramLink}} @endisset">ashenmedia</a>
                     2023</strong> ©
                 </div>
               </div>

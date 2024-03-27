@@ -99,7 +99,7 @@
         });
 
         $(document).on('click', '.editSlide', function() {
-            debugger;
+            
             var id = $(this).data('slideid');
             var url = $(this).data('url');
             $.ajax({
@@ -111,7 +111,7 @@
                 cache: false,
                 processData: false,
                 success: function(data) {
-                    debugger;
+                    
                     $('#name').val(data.name);
                     var imagePath = "{{ asset('storage/images/') }}" + '/' + data.path;
 
@@ -131,20 +131,34 @@
         $(document).on('click', '.deleteSile', function() {
 
             var product_id = $(this).data("slideid");
-            confirm("Are You sure want to delete !");
+            Swal.fire({
+                title: 'هل انت متاكد من عملية الحدف?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'نعم',
+                denyButtonText: `لا`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Saved!', '', 'success')
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{{ route('slider.delete') }}" + '/' + product_id,
+                        success: function(data) {
+                            table.draw();
+                            toastr.success('done');
 
-            $.ajax({
-                type: "DELETE",
-                url: "{{ route('slider.delete') }}" + '/' + product_id,
-                success: function(data) {
-                    table.draw();
-                    toastr.success('done');
-
-                },
-                error: function(data) {
-                    toastr.error('error');
+                        },
+                        error: function(data) { 
+                            toastr.error('error');
+                        }
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
                 }
-            });
+            })
+
+
         });
 
         $('#saveBtn').click(function(e) {

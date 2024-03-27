@@ -7,6 +7,7 @@ use App\Models\goalssection;
 use App\Models\missionsection;
 use App\Models\Visionsection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class aboutController extends Controller
 {
@@ -61,7 +62,10 @@ class aboutController extends Controller
         $file = $request->file('file'); // Replace 'file' with your input name
         
         if($file){
-
+            if (File::exists('public/images/' . $aboutus->path)) {
+                // Delete the file
+                File::delete($aboutus->path);
+            }
             $fileName = time() . '.' . $file->getClientOriginalExtension();
             
             $file->storeAs('public/images', $fileName);
@@ -96,7 +100,10 @@ class aboutController extends Controller
         $Vision = Visionsection::first();
         $file = $request->file('file'); // Replace 'file' with your input name
         if($file){
-            
+            if (File::exists('public/images/' . $Vision->path)) {
+                // Delete the file
+                File::delete($Vision->path);
+            }
             $fileName = time() . '.' . $file->getClientOriginalExtension();
             
             $file->storeAs('public/images', $fileName);
@@ -133,7 +140,10 @@ class aboutController extends Controller
         $file = $request->file('file'); // Replace 'file' with your input name
         
         if($file){
-
+            if (File::exists('public/images/' . $mission->path)) {
+                // Delete the file
+                File::delete($mission->path);
+            }
             $fileName = time() . '.' . $file->getClientOriginalExtension();
             
             $file->storeAs('public/images', $fileName);
@@ -171,7 +181,10 @@ class aboutController extends Controller
         $goals = goalssection::first();
         $file = $request->file('file'); // Replace 'file' with your input name
         if($file){
-
+            if (File::exists('public/images/' . $goals->path)) {
+                // Delete the file
+                File::delete($goals->path);
+            }
             $fileName = time() . '.' . $file->getClientOriginalExtension();
             
             $file->storeAs('public/images', $fileName);

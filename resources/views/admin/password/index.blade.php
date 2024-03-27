@@ -3,29 +3,26 @@
 
 @section('content')
 
-<h1>add out  mission  section</h1>
-<form action="{{route('aboutus.storemission')}}" method="post" id="missionForm" name="missionForm" enctype="multipart/form-data">
+<h1>update your password</h1>
+<form action="{{route('newPassword.store')}}" method="post" id="passwordForm" name="passwordForm" enctype="multipart/form-data">
     @csrf
     @method('post')
 
     <div class="col-md-6 mb-10">
-        <label class="form-label">description </label>
-        <textarea name="description"  class="form-control form-control-solid" cols="30" rows="10"> @isset($ourmission){{ $ourmission->description }}  @endisset</textarea>
+        <label class="form-label"> inter your password </label>
+        <input type="password" name="password"  class="form-control form-control-solid" id="password">
     </div>
     <div class="col-md-6 mb-10">
-        <label class="form-label">description arbic </label>
-        <textarea name="description_ar"  class="form-control form-control-solid" cols="30" rows="10"> @isset($ourmission){{ $ourmission->description_ar }}  @endisset</textarea>
+        <label class="form-label">inter your new password</label>
+        <input type="password" name="New_password"  class="form-control form-control-solid" id="New_password">
     </div>
     <div class="col-md-6 mb-10">
-        <label class="form-label">photo </label>
-        <input type="file" name="file" class="form-control form-control-solid" />
-        @if($ourmission)
-        @if($ourmission->path)
-        <img src="{{asset('storage/images/' . $ourmission->path)}}" alt="" width="40" height="40">
-        @endif
-        @endif
+        <label class="form-label">Confirm the password </label>
+        <input type="password" name="Confirm_password"  class="form-control form-control-solid" id="Confirm_password">
+        
 
     </div>
+    
     <div class="col-md-6 mb-10">
         <button  id="saveBtn" class="btn btn-primary mt-3">save</button>
     </div>
@@ -62,11 +59,9 @@
     $(document).on('click','#saveBtn',function(e) {
         e.preventDefault();
 
-        var form = $("#missionForm")[0];
-        e.preventDefault();
+        var form = $("#passwordForm")[0];
         var data = new FormData(form)
-        var url = $("#missionForm").attr('action');
-        
+        var url = $("#passwordForm").attr('action');
         $.ajax({
             data: data,
             url: url,
@@ -83,7 +78,8 @@
                 
             },
             error: function(data) {
-                toastr.error(data.responseJSON.message);
+                debugger;
+                toastr.error(data.responseJSON);
 
             }
         });

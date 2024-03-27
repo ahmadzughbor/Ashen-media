@@ -98,14 +98,14 @@
         form.setActiveView = function(index) {
             var previousView = form.getActiveView()[0];
             var previousIndex = form.views.index(previousView);
-            // debugger;
+            // 
            
             if(form.attr('id') == "certification_request-createForm" || form.attr('id') == "certification_request-editForm" ){
                 if(index== 2){                    
                     fillStudentTab();
                 }
             }
-            // debugger;
+            // 
            
             $(previousView).hide();
             //if(previousView)

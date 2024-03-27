@@ -67,7 +67,7 @@
         e.preventDefault();
         var data = new FormData(form)
         var url = $("#aboutForm").attr('action');
-        debugger;
+        
         $.ajax({
             data: data,
             url: url,

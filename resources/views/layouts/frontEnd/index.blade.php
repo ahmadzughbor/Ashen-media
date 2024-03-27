@@ -20,14 +20,11 @@ $assets = asset('front');
   " name="description">
     <meta content="Identity design,Publications design,Voiceover,Launching and managing marketing campaigns,Motion graphics,Managing social media pages,Website design and programming," name="keywords">
 
-    <!-- Icon -->
     <link href="{{ $assets }}/assets/img/logo.svg" rel="icon">
     <link href="{{ $assets }}/assets/img/logo.svg" rel="apple-touch-icon">
 
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
     <link href="{{ $assets }}/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="{{ $assets }}/assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="{{ $assets }}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -36,12 +33,11 @@ $assets = asset('front');
     <link href="{{ $assets }}/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="{{ $assets }}/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="{{ $assets }}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- <link href="{{ $assets }}/assets/css/bootstrap-rtl.min.css" rel="stylesheet"> -->
     @if(app()->getLocale() == 'ar')
-    <link href="{{ $assets }}/assets/css/bootstrap-rtl.min" rel="stylesheet">
+    <link href="{{ $assets }}/assets/css/style.rtl.css" rel="stylesheet">
     @endif
 
-    <!-- RTL -->
-    <!-- Template Main CSS File -->
     <link href="{{ $assets }}/assets/css/style.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
 
@@ -53,11 +49,9 @@ $assets = asset('front');
 
 <body>
 
-    <!-- ======= Header ======= -->
 
     @include('layouts.frontEnd.navbar')
 
-    <!-- End Header -->
 
         @yield('content')
 
@@ -68,7 +62,6 @@ $assets = asset('front');
 
     <a href="https://wa.me/+971502143112" target="_blank" class="whats-icon"><i class="bx bxl-whatsapp"></i></a>
 
-    <!-- Vendor JS Files -->
     <script src="{{ $assets }}/assets/vendor/purecounter/purecounter.js"></script>
     <script src="{{ $assets }}/assets/vendor/aos/aos.js"></script>
     <script src="{{ $assets }}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -76,7 +69,6 @@ $assets = asset('front');
     <script src="{{ $assets }}/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="{{ $assets }}/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-    <!-- Template Main JS File -->
     <script src="{{ $assets }}/assets/js/main.js"></script>
 
 </body>

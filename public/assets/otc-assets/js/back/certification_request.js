@@ -79,7 +79,7 @@ function fillStudentTab() {
         var student_identity = $(item).find("input.student_identityIn").val();
         var name = $(item).find("input.studantNameIn").val();
 
-        // debugger;
+        // 
         if (student_identity != "" && name != "") {
             studentData = {
                 student_identity: student_identity,
@@ -89,7 +89,7 @@ function fillStudentTab() {
                 allStudent.push(studentData);
             }
         }
-        // debugger;
+        // 
 
         if (allStudent.length > 0) {
             drowStudentFiles(allStudent);
@@ -98,7 +98,7 @@ function fillStudentTab() {
 }
 
 function drowStudentFiles(arrayItems) {
-    // debugger;
+    // 
 
     var html = null;
 

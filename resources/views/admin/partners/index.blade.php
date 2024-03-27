@@ -5,12 +5,12 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <a href="javascript:void(0)" class="btn btn-primary  " id="createNewSlide"> add slider</a>
+        <a href="javascript:void(0)" class="btn btn-primary  " id="createNewSlide"> add partners</a>
         <!-- <h6 class="m-0 font-weight-bold text-primary">slider</h6> -->
 
     </div>
     <div class="container">
-        <h1>slider section </h1>
+        <h1>partners section </h1>
         <table class="table table-bordered data-table">
             <thead>
                 <tr>
@@ -33,7 +33,7 @@
             <div class="modal-body">
                 <form id="partnerForm" name="partnerForm" class="form-horizontal">
                     @csrf
-                  
+
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">file</label>
@@ -92,7 +92,6 @@
         });
 
         $(document).on('click', '.editpartner', function() {
-            debugger;
             var id = $(this).data('partnerid');
             var url = $(this).data('url');
             $.ajax({
@@ -104,7 +103,7 @@
                 cache: false,
                 processData: false,
                 success: function(data) {
-                    debugger;
+                    
                     $('#name').val(data.name);
                     var imagePath = "{{ asset('storage/images/') }}" + '/' + data.path;
 
@@ -124,20 +123,34 @@
         $(document).on('click', '.deletepartner', function() {
 
             var product_id = $(this).data("partnerid");
-            confirm("Are You sure want to delete !");
+            Swal.fire({
+                title: 'هل انت متاكد من عملية الحدف?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'نعم',
+                denyButtonText: `لا`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Saved!', '', 'success')
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{{ route('partner.delete') }}" + '/' + product_id,
+                        success: function(data) {
+                            table.draw();
+                            toastr.success('done');
 
-            $.ajax({
-                type: "DELETE",
-                url: "{{ route('partner.delete') }}" + '/' + product_id,
-                success: function(data) {
-                    table.draw();
-                    toastr.success('done');
-
-                },
-                error: function(data) {
-                    toastr.error('error');
+                        },
+                        error: function(data) {
+                            toastr.error('error');
+                        }
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
                 }
-            });
+            })
+
+
         });
 
         $('#saveBtn').click(function(e) {
@@ -182,9 +195,9 @@
             ajax: "{{ route('partner.data') }}",
             columns: [{
                     data: 'id',
-                    name: 'id'
+                    name: 'id',
+                    class: "text-center align-top mt-4",
                 },
-              
                 {
                     data: 'file',
                     name: 'file'

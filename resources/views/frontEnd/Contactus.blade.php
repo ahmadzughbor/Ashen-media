@@ -22,25 +22,25 @@
                              @csrf
                              <div class="row">
                                  <div class="col">
-                                     <label class="mb-1">First Name</label>
+                                     <label class="mb-1">{{__('FirstName')}}</label>
                                      <input type="text" name="first_name" class="form-control" required placeholder="First Name" aria-label="First Name">
                                  </div>
                                  <div class="col">
-                                     <label class="mb-1">Last Name</label>
+                                     <label class="mb-1">{{__('LastName')}}</label>
                                      <input type="text" name="last_name" class="form-control" required placeholder="Last Name" aria-label="Last Name">
                                  </div>
                              </div>
 
                              <div class="col-12 mt-2">
-                                 <label class="mb-1">Email</label>
+                                 <label class="mb-1">{{__('Email')}}</label>
                                  <input type="Email" name="Email" class="form-control" required id="email" placeholder="asem@gmail.com">
                              </div>
                              <div class="col-12 mt-2">
-                                 <label class="mb-1">Phone</label>
+                                 <label class="mb-1">{{__('Phone')}}</label>
                                  <input type="tel" name="Phone" class="form-control" required id="tel" placeholder="+000 000 000 000">
                              </div>
                              <div class="col-12 mt-2 mb-3">
-                                 <label class="mb-1">Message</label>
+                                 <label class="mb-1">{{__('Message')}}</label>
                                  <textarea name="Message" class="form-control" required id="message" type="text" placeholder="Message" style="height: 8rem;" data-sb-validations="required"></textarea>
                                  <div class="invalid-feedback" data-sb-feedback="message:required">Message is
                                      required.</div>
@@ -108,7 +108,7 @@
              e.preventDefault();
              var data = new FormData(form)
              var url = $("#contactForm").attr('action');
-             debugger;
+             
              $.ajax({
                  data: data,
                  url: url,
@@ -119,14 +119,14 @@
                  processData: false,
                  success: function(data) {
 
-                     $('#serviceForm').trigger("reset");
+                     $('#contactForm').trigger("reset");
                      $('#ajaxModel').modal('hide');
                      toastr.success('done');
 
                  },
                  error: function(data) {
                      console.log('Error:', data);
-                     toastr.error(data);
+                     toastr.error(data.responseJSON.message);
 
                      $('#saveBtn').html('Save Changes');
                  }

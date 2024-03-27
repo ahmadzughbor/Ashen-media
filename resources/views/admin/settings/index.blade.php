@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1> settings  : الاعدادت  </h1>
+<h1> settings : الاعدادت </h1>
 <form action="{{route('settings.store')}}" method="post" id="settingsForm" name="settingsForm" enctype="multipart/form-data">
     @csrf
     @method('post')
@@ -56,14 +56,22 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="snapchatLink">app logo</label>
-                
-                <input type="file" name="app_logo" class="form-control" id="app_logo" placeholder="app_logo">
+
+                <input type="file" name="app_logo"  class="form-control" id="app_logo" placeholder="app_logo">
             </div>
         </div>
         @if($settings)
-            @if($settings->app_logo)
+        @if($settings->app_logo)
+        <div class="col-md-6">
+            <div class="form-group">
+
+                <label for="snapchatLink">cuurent app logo</label>
+
                 <img src="{{asset('storage/images/' . $settings->app_logo)}}" alt="" width="50" height="50">
-            @endif
+            </div>
+        </div>
+        @endif
+
         @endif
     </div>
 
@@ -121,7 +129,7 @@
                 $('#twitterLink').val(data.whatsappLink);
                 $('#tiktokLink').val(data.tiktokLink);
                 $('#snapchatLink').val(data.snapchatLink);
-               
+
                 toastr.success('done');
 
 

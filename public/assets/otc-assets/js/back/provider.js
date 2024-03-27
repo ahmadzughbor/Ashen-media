@@ -158,7 +158,7 @@ $(document).on('click','.updateProvide-btn', function (e) {
   $(this).find('.check-icon').css('display', 'none');
   $(this).find('.submit-text').text('جاري الحفظ...');
   $(this).prop("disabled", true);
-// debugger;
+// 
   let submit = $(".provide-editForm");
   e.preventDefault(); // Totally stop stuff happening
   // Create a formdata object and add the files

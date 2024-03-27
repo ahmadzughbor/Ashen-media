@@ -154,7 +154,7 @@ $(document).ready(function () {
     loadAssignments(1);
 });
 function load_assignments() {
-    // debugger;
+    // 
     $("#list").empty();
     loadAssignments(1);
 }
@@ -182,7 +182,7 @@ function loadStudentSubmits(url, page) {
 function ChangeSeemoreText(elementjq, event)
 {
     setTimeout(function() {
-        // debugger;
+        // 
         if(elementjq.prev().hasClass('line-clamp-2')){
             $('#seeless').fadeOut(50,function(){
                 $('#seemore').fadeIn(50);
@@ -198,7 +198,7 @@ function ChangeSeemoreText(elementjq, event)
 
 
 function assignmentSubmit(element, event) {
-    // debugger;
+    // 
 }
 
 function loadTrainersAfterSuccess(element, event) {

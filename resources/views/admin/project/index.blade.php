@@ -103,7 +103,7 @@
         $(document).on('click', '.editproject', function() {
             var id = $(this).data('projectid');
             var url = $(this).data('url');
-            debugger;
+            
             $.ajax({
                 data: id,
                 url: "{{ route('project.edit') }}" + '/' + id,
@@ -113,7 +113,7 @@
                 cache: false,
                 processData: false,
                 success: function(data) {
-                    debugger;
+                    
                     $('#link').val(data.link);
                     $('#name').val(data.name);
 
@@ -133,20 +133,35 @@
         $(document).on('click', '.deleteproject', function() {
 
             var product_id = $(this).data("projectid");
-            confirm("Are You sure want to delete !");
+            Swal.fire({
+                title: 'هل انت متاكد من عملية الحدف?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'نعم',
+                denyButtonText: `لا`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Saved!', '', 'success')
 
-            $.ajax({
-                type: "DELETE",
-                url: "{{ route('project.delete') }}" + '/' + product_id,
-                success: function(data) {
-                    table.draw();
-                    toastr.success('done');
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{{ route('project.delete') }}" + '/' + product_id,
+                        success: function(data) {
+                            table.draw();
+                            toastr.success('done');
 
-                },
-                error: function(data) {
-                    toastr.error('error');
+                        },
+                        error: function(data) {
+                            toastr.error('error');
+                        }
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
                 }
-            });
+            })
+
+
         });
 
         $('#saveBtn').click(function(e) {
@@ -155,7 +170,7 @@
             e.preventDefault();
             var data = new FormData(form)
             var url = $("#ProjectForm").attr('action');
-            debugger;
+            
             $.ajax({
                 data: data,
                 url: url,
@@ -175,7 +190,7 @@
                 error: function(data) {
                     toastr.error(data.responseJSON.message);
 
-                   
+
                     $('#saveBtn').html('Save Changes');
                 }
             });

@@ -66,7 +66,7 @@
         e.preventDefault();
         var data = new FormData(form)
         var url = $("#visionForm").attr('action');
-        debugger;
+        
         $.ajax({
             data: data,
             url: url,

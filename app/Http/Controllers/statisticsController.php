@@ -47,6 +47,10 @@ class statisticsController extends Controller
                 'section3' => $request->section3,
                 'num4'  => $request->num4,
                 'section4' => $request->section4,
+                'section1_ar' => $request->section1_ar,
+                'section2_ar' => $request->section2_ar,
+                'section3_ar' => $request->section3_ar,
+                'section4_ar' => $request->section4_ar,
             ]);
         }else{
             $Statistic =Statistic::create([
@@ -58,6 +62,10 @@ class statisticsController extends Controller
                 'section3' => $request->section3,
                 'num4'  => $request->num4,
                 'section4' => $request->section4,
+                'section1_ar' => $request->section1_ar,
+                'section2_ar' => $request->section2_ar,
+                'section3_ar' => $request->section3_ar,
+                'section4_ar' => $request->section4_ar,
             ]);
 
         }

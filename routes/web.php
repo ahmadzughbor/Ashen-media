@@ -4,6 +4,7 @@ use App\Http\Controllers\aboutController;
 use App\Http\Controllers\fronController;
 use App\Http\Controllers\packagesController;
 use App\Http\Controllers\partnersController;
+use App\Http\Controllers\passwordController;
 use App\Http\Controllers\peopleMessageController;
 use App\Http\Controllers\projectController;
 use App\Http\Controllers\saysController;
@@ -24,9 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [fronController::class, 'index']);
 
 Route::get('/admin', function () {
     return view('layouts.admin.index');
@@ -134,7 +133,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     /////////////// Contact Us
 
     Route::get('/ContactUs', [peopleMessageController::class, 'index'])->name("ContactUs.index");
-    Route::post('/ContactUs/store', [peopleMessageController::class, 'store'])->name('ContactUs.store');
+    //Route::post('/ContactUs/store', [peopleMessageController::class, 'store'])->name('ContactUs.store');
     Route::get('/ContactUs/data', [peopleMessageController::class, 'data'])->name('ContactUs.data');
 
 
@@ -142,8 +141,16 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/settings', [settingsController::class, 'index'])->name("settings.index");
     Route::post('/settings/store', [settingsController::class, 'store'])->name("settings.store");
+
+
+    ///////////  password 
+    Route::post('/password/store', [passwordController::class, 'store'])->name("newPassword.store");
+    Route::get('/password', [passwordController::class, 'index'])->name("password.index");
+    
+    
 });
 
+Route::post('/ContactUs/store', [peopleMessageController::class, 'store'])->name('ContactUs.store');
 
 include 'auth.php';
 

@@ -97,7 +97,8 @@
             $('#saveBtn').val("create-service");
             $('#product_id').val('');
             $('#package-form').trigger("reset");
-            $('#modelHeading').html("Create New project");
+            $('#features-container').html("");
+            $('#modelHeading').html("Create New package");
             $("#package-form").attr('action', "{{ route('packages.store') }}");
 
             $('#ajaxModel').modal('show');
@@ -106,7 +107,7 @@
         $(document).on('click', '.editproject', function() {
             var id = $(this).data('packageid');
             var url = $(this).data('url');
-            debugger;
+            
             $.ajax({
                 data: id,
                 url: "{{ route('packages.edit') }}" + '/' + id,
@@ -116,7 +117,7 @@
                 cache: false,
                 processData: false,
                 success: function(data) {
-                    debugger;
+                    
                     $('#amount').val(data.amount);
                     $('#name').val(data.name);
 
@@ -152,20 +153,36 @@
         $(document).on('click', '.deletepackage', function() {
 
             var product_id = $(this).data("packageid");
-            confirm("Are You sure want to delete !");
+            Swal.fire({
+                title: 'هل انت متاكد من عملية الحدف?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'نعم',
+                denyButtonText: `لا`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Saved!', '', 'success')
 
-            $.ajax({
-                type: "DELETE",
-                url: "{{ route('packages.delete') }}" + '/' + product_id,
-                success: function(data) {
-                    table.draw();
-                    toastr.success('done');
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{{ route('packages.delete') }}" + '/' + product_id,
+                        success: function(data) {
+                            table.draw();
+                            toastr.success('done');
 
-                },
-                error: function(data) {
-                    toastr.error('error');
+                        },
+                        error: function(data) {
+                            toastr.error('error');
+                        }
+                    });
+
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
                 }
-            });
+            })
+
+
         });
 
         $('#saveBtn').click(function(e) {
@@ -174,7 +191,7 @@
             e.preventDefault();
             var data = new FormData(form)
             var url = $("#package-form").attr('action');
-            debugger;
+            
             $.ajax({
                 data: data,
                 url: url,

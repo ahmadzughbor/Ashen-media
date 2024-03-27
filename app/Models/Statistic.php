@@ -10,9 +10,9 @@ class Statistic extends Model
     use HasFactory;
     protected $table = "statistics";
     protected $fillable = [
-        'num1','section1',
-        'num2','section2',
-        'num3','section3',
-        'num4','section4',
+        'num1','section1','section1_ar',
+        'num2','section2','section2_ar',
+        'num3','section3','section3_ar',
+        'num4','section4','section4_ar',
     ];
 }

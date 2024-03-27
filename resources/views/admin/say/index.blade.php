@@ -5,12 +5,12 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <a href="javascript:void(0)" class="btn btn-primary  " id="createNewServise"> add slider</a>
+        <a href="javascript:void(0)" class="btn btn-primary " id="createNewServise"> add says</a>
         <!-- <h6 class="m-0 font-weight-bold text-primary">slider</h6> -->
 
     </div>
     <div class="container">
-        <h1>slider section </h1>
+        <h1>says section </h1>
         <table class="table table-bordered data-table">
             <thead>
                 <tr>
@@ -36,19 +36,19 @@
                 <form id="sayForm" name="sayForm" class="form-horizontal">
                     @csrf
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">user_name</label>
+                        <label for="name" class="col-12 control-label">user name</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Enter Name" value="" maxlength="50" required="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">company_name</label>
+                        <label for="name" class="col-12 control-label">company name</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Enter Name" value="" maxlength="50" required="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">description</label>
+                        <label for="name" class="col-12 control-label">description</label>
                         <div class="col-sm-12">
 
                             <!-- <input type="text" class="form-control" id="description" name="description" placeholder="Enter Name" value="" maxlength="50" required=""> -->
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">User image</label>
+                        <label class="col-12 control-label">User image</label>
                         <div class="col-sm-12">
                             <input type="file" src="" id="image" name="image">
                         </div>
@@ -98,23 +98,22 @@
         --------------------------------------------
         --------------------------------------------*/
     });
-
     $(document).ready(function() {
-        getdata();
         $('#createNewServise').click(function() {
-            $('#saveBtn').val("create-service");
+            $('#saveBtn').val("create-says");
             $('#product_id').val('');
             $('#sayForm').trigger("reset");
-            $('#modelHeading').html("Create New say");
+            $('#modelHeading').html("Create New says");
             $("#sayForm").attr('action', "{{ route('say.store') }}");
 
             $('#ajaxModel').modal('show');
         });
+        getdata();
 
         $(document).on('click', '.editsay', function() {
             var id = $(this).data('sayid');
             var url = $(this).data('url');
-            debugger;
+
             $.ajax({
                 data: id,
                 url: "{{ route('say.edit') }}" + '/' + id,
@@ -124,7 +123,7 @@
                 cache: false,
                 processData: false,
                 success: function(data) {
-                    debugger;
+                    
                     $('#user_name').val(data.user_name);
                     $('#company_name').val(data.company_name);
                     $('#description').val(data.description);
@@ -144,9 +143,18 @@
         $(document).on('click', '.deletesay', function() {
 
             var product_id = $(this).data("sayid");
-            confirm("Are You sure want to delete !");
+            Swal.fire({
+                title: 'هل انت متاكد من عملية الحدف?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'نعم',
+                denyButtonText: `لا`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Saved!', '', 'success')
 
-            $.ajax({
+                    $.ajax({
                 type: "DELETE",
                 url: "{{ route('say.delete') }}" + '/' + product_id,
                 success: function(data) {
@@ -155,9 +163,13 @@
 
                 },
                 error: function(data) {
-                    toastr.error('error');
                 }
             });
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
+                }
+            })
+           
         });
 
         $('#saveBtn').click(function(e) {
@@ -166,7 +178,7 @@
             e.preventDefault();
             var data = new FormData(form)
             var url = $("#sayForm").attr('action');
-            debugger;
+            
             $.ajax({
                 data: data,
                 url: url,
@@ -195,7 +207,6 @@
     var table = $('.data-table').DataTable();
 
     function getdata() {
-
         table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,

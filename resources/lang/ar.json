@@ -11,5 +11,10 @@
     "OurPartners": "شركاء",
     "says": "ماذا قيل عنا",
     "OurVision": "رؤيتنا",
-    "OurMission": "مهمتنا"
-  }
+    "OurMission": "مهمتنا",
+    "FirstName": "الاسم الاول",
+    "LastName": "الاسم الاخير",
+    "Email": "الايميل",
+    "Phone": "رقم الجوال",
+    "Message": "الرسالة"
+}
